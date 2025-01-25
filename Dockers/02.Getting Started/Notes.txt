@@ -1,0 +1,8 @@
+What is Docker:
+
+Tool to creating and managing container
+
+What is Docker:
+
+A Standard Unit of Software. A bundle of Code and all it's dependencies to run that code.
+
