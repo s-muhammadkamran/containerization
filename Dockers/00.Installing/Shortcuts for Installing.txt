@@ -1,0 +1,22 @@
+Docker:
+
+Linux Install: 
+https://docs.docker.com/engine/install/
+
+Max Install:
+https://docs.docker.com/desktop/setup/install/mac-install/
+
+Windows Install:
+https://docs.docker.com/desktop/setup/install/windows-install/
+
+Docker Toolbox:
+
+MacOS:
+https://github.com/docker-archive/toolbox/blob/master/docs/toolbox_install_mac.md
+
+Windows:
+https://github.com/docker-archive/toolbox/blob/master/docs/toolbox_install_windows.md
+
+
+
+
