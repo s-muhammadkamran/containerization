@@ -1,0 +1,20 @@
+#pull images:
+
+docker pull centos:latest
+docker pull quay.io/centos/centos:latest
+docker pull quay.io/centos/centos:stream9
+
+#Pull centos:stream latest image from quay.io
+#centos:stream is now hosted on quay.io instead of docker hub.
+
+docker pull quay.io/centos/centos:stream9
+
+List Images:
+
+docker images 
+
+Run Image in a Container and open a terminal in /bin/bash:
+
+docker run -it centos_container --name centos /bin/bash
+
+docker run -it --name centos_stream quay.io/centos/centos:stream9 /bin/bash
