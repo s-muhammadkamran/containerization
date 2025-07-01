@@ -1,5 +1,5 @@
 # Use this Base image
-FROM python:3.10
+FROM python:slim-bullseye
 
 # Change my working DIR to /app in container
 WORKDIR /HelloWorldApp
@@ -8,13 +8,14 @@ WORKDIR /HelloWorldApp
 COPY . /HelloWorldApp
 
 # Install the dependencies from requirements.txt
-RUN pip install -r requirements.txt
+# Use --trusted-host option to avoid SSL issues
+RUN pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org -r requirements.txt
 
 # Expose the port
 EXPOSE 5000
 
 # Start the application
-CMD ["python", "./hello-app.py"]
+CMD ["python", "hello-app.py"]
 
 # build the docker image using the below command
 ## docker build -t UserName/hello-world-web:latest .
@@ -23,3 +24,6 @@ CMD ["python", "./hello-app.py"]
 ## -t = TAG in the docker format 
 ## dockerhubusername/containername:version
 ## default version is latest if ommitted
+
+# Run the Docker Container
+## docker run -p 5000:5000 msyed/hello-world-web
