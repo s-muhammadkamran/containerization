@@ -26,4 +26,4 @@ CMD ["python", "hello-app.py"]
 ## default version is latest if ommitted
 
 # Run the Docker Container
-## docker run -p 5000:5000 msyed/hello-world-web
+## docker run -d -p 5000:5000 msyed/hello-world-web
