@@ -1,0 +1,45 @@
+## Docker Compose Format
+
+docker-compose [COMMAND] [OPTIONS]
+
+## Most Common Commands
+
+up	    # Build, (re)create, start containers
+down	# Stop and remove containers, networks, volumes
+build	# Build or rebuild services
+start	# Start existing containers
+stop	# Stop running containers
+restart	# Restart services
+logs	# View logs
+ps	    # List containers
+exec	# Run a command inside a running container
+run	Run # one-off command (like docker run)
+pull	# Pull service images
+push	# Push service images
+
+## Command examples:
+
+docker compose up           # foreground
+docker compose up -d        # detached/background
+docker compose down
+docker compose down --volumes --remove-orphans
+docker compose build
+docker compose ps
+docker compose logs
+docker compose logs -f
+docker compose exec web bash       # if your service is named 'web'
+docker compose restart
+
+
+## Typical Docker Compose YAML file
+
+version: '3.9'
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    environment:
+      - NODE_ENV=development

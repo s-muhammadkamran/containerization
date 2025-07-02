@@ -1,0 +1,45 @@
+# Typical Dockerfile Format
+
+LABEL version="1.0"     # Adds meta data
+
+FROM node:18 AS build   # Choose a base image and name a build stage
+
+ENV Key=Value           # Set environment variable in key value. For more environment variable add more ENV tags
+
+WORKDIR /myapp          # Create and change to a Working Dir in container
+
+COPY . /myapp           # Copy all files from current location in host to container
+
+RUN npm install         # Run a command in container
+
+EXPOSE 3000             # Expose a port
+
+VOLUME /data            # Declare a mount point for external storage
+
+USER node               # Sets the user for following instructions and container execution
+
+ARG APP_VERSION 1.0.0   # Declares build-time variables (not available at runtime)
+
+CMD ["npm", "start"]    # Run commands as list in container
+
+HEALTHCHECK CMD cur     # Define a command to check container health
+-- fail http://localhost:3000 || exit 1
+
+
+
+## Example Dockerfile combining everything:
+
+FROM node:18 AS build
+LABEL maintainer="kamran@example.com"
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . /app
+RUN npm run build
+
+FROM nginx:alpine
+COPY --from=build /app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+
+

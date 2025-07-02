@@ -30,26 +30,26 @@ docker login -u user_name       # Login a user_name
 
 ## Container Lifecycle
 
-docker start container_id
-docker stop container_id
-docker restart container_id
+docker start container_id       # Start an existing container
+docker stop container_id        # Stop a running container
+docker restart container_id     # Restart an existing container
 docker run image_name           # Start a container in current session
 docker run -d image_name        # Detach mode
 docker run -it image_name       # Interactive mode
-docker run -d --rm --name 
-"cont_name" 
+docker run -d --rm --name       -- Next line
+"cont_name"                     -- Next line
 -p host_port:cont_port img_name # Start a container and remove it once it's done
-docker run -d 
+docker run -d                   -- Next line
 -p port_num:port_num image_name # Run a container mapping a port between host and container
-docker ps                       # proces state
-docker ps -a                    # process state all
+docker ps                       # proces state (List Running Containers)
+docker ps -a                    # process state all (List All Containers)
 docker rm container_id          # remove a container
 docker exec -it cont_id bash    # Run a command inside a running container
 
 ## Image Management
 
-docker build -t image_name .    # Build Image from Docker file
-docker build -t image_name 
+docker build -t img_name:tag .  # Build Image from Docker file
+docker build -t img_name:tag    -- Next line
 -f Dockerfile .                 # Build Image from Dockerfile
 docker image ls                 # List images
 docker images                   # List local images
@@ -83,7 +83,6 @@ docker help             # Help
 
 ## Debugging
 
-docker inspect container_id	    #Inspect container or image metadata
+docker inspect container_id	    # Inspect container or image metadata
 docker stats                    # Show real-time resource usage
 docker top container_id	        # Show running processes inside container
-
