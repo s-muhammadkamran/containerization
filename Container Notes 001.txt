@@ -23,10 +23,13 @@ docker run -it --name centos_stream quay.io/centos/centos:stream9 /bin/bash
 -d  = detach mode
 -p  = provide port mapping 3000:3000
 
+========================================================
+
 ## Login/Logout
 
 docker logout                   # Logout from a terminal
 docker login -u user_name       # Login a user_name
+
 
 ## Container Lifecycle
 
@@ -36,26 +39,29 @@ docker restart container_id     # Restart an existing container
 docker run image_name           # Start a container in current session
 docker run -d image_name        # Detach mode
 docker run -it image_name       # Interactive mode
-docker run -d --rm --name       -- Next line
-"cont_name"                     -- Next line
--p host_port:cont_port img_name # Start a container and remove it once it's done
-docker run -d                   -- Next line
--p port_num:port_num image_name # Run a container mapping a port between host and container
+docker run -d --rm --name       # Start a container and remove it once it's done
+  "cont_name" -p                --
+  host_port:cont_port img_name  --
+docker run -d -p                # Run a container mapping a port between host and container
+  port_num:port_num image_name  --
 docker ps                       # proces state (List Running Containers)
 docker ps -a                    # process state all (List All Containers)
 docker rm container_id          # remove a container
 docker exec -it cont_id bash    # Run a command inside a running container
 
+
 ## Image Management
 
 docker build -t img_name:tag .  # Build Image from Docker file
-docker build -t img_name:tag    -- Next line
--f Dockerfile .                 # Build Image from Dockerfile
+docker build -t img_name:tag    # Build Image from Dockerfile
+  -f Dockerfile .               --
 docker image ls                 # List images
 docker images                   # List local images
 docker rmi image_id             # Remove an image
 docker pull image_name          # Pull an image from docker hub
 docker push image_name          # Push an image to docker hub
+docker tag oldimag:tag          # Rename/Tag an existing docker image
+  newimag:tag                   --
 
 
 ## Volume Management
@@ -71,7 +77,9 @@ docker volume rm volume_name        # Remove volume
 docker network ls	            # List networks
 docker network create net_name	# Create a custom network
 docker network inspect net_name	# View network details
-docker network connect net_name container_name	# Connect container to a network
+docker network connect net_name # Connect container to a network
+  container_name                --	
+
 
 ## System Cleanup & Info
 
@@ -80,6 +88,7 @@ docker system prune	    # Remove unused containers, images, networks, volumes (p
 docker info	            # Detailed Docker environment info
 docker version	        # Docker client/server version
 docker help             # Help
+
 
 ## Debugging
 
