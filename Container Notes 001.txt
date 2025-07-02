@@ -18,3 +18,67 @@ Run Image in a Container and open a terminal in /bin/bash:
 docker run -it centos_container --name centos /bin/bash
 
 docker run -it --name centos_stream quay.io/centos/centos:stream9 /bin/bash
+
+-it = interactive mode
+-d  = detach mode
+-p  = provide port mapping 3000:3000
+
+## Login/Logout
+
+docker logout                   # Logout from a terminal
+docker login -u user_name       # Login a user_name
+
+## Container Lifecycle
+
+docker start container_id
+docker stop container_id
+docker restart container_id
+docker run image_name           # Start a container in current session
+docker run -d image_name        # Detach mode
+docker run -it image_name       # Interactive mode
+docker run -d -rm image_name    # Start a container and remove it once it's done
+docker run -d -p port_num:port_num image_name  # Run a container mapping a port between host and container
+docker ps                       # proces state
+docker ps -a                    # process state all
+docker rm container_id          # remove a container
+docker exec -it container_id bash   # Run a command inside a running container
+
+## Image Management
+
+docker build -t image_name .    # Build Image from Docker file
+docker build -t image_name -f Dockerfile .    # Build Image from Dockerfile
+docker images                   # List local images
+docker rmi image_id             # Remove an image
+docker pull image_name          # Pull an image from docker hub
+docker push image_name          # Push an image to docker hub
+
+
+## Volume Management
+
+docker volume create volume_name    # Create a named volume
+docker volume ls                    # List volumes
+docker volume inspect volume_name	# Inspect volume details
+docker volume rm volume_name        # Remove volume
+
+
+## Networking
+
+docker network ls	            # List networks
+docker network create net_name	# Create a custom network
+docker network inspect net_name	# View network details
+docker network connect net_name container_name	# Connect container to a network
+
+## System Cleanup & Info
+
+docker system df	    # Show disk usage by Docker
+docker system prune	    # Remove unused containers, images, networks, volumes (prompted)
+docker info	            # Detailed Docker environment info
+docker version	        # Docker client/server version
+docker help             # Help
+
+## Debugging
+
+docker inspect container_id	    #Inspect container or image metadata
+docker stats                    # Show real-time resource usage
+docker top container_id	        # Show running processes inside container
+
