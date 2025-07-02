@@ -1,19 +1,19 @@
-#pull images:
+## pull images:
 
 docker pull centos:latest
 docker pull quay.io/centos/centos:latest
 docker pull quay.io/centos/centos:stream9
 
-#Pull centos:stream latest image from quay.io
-#centos:stream is now hosted on quay.io instead of docker hub.
+# Pull centos:stream latest image from quay.io
+# centos:stream is now hosted on quay.io instead of docker hub.
 
 docker pull quay.io/centos/centos:stream9
 
-List Images:
+## List Images:
 
 docker images 
 
-Run Image in a Container and open a terminal in /bin/bash:
+## Run Image in a Container and open a terminal in /bin/bash:
 
 docker run -it centos_container --name centos /bin/bash
 
@@ -36,17 +36,22 @@ docker restart container_id
 docker run image_name           # Start a container in current session
 docker run -d image_name        # Detach mode
 docker run -it image_name       # Interactive mode
-docker run -d -rm image_name    # Start a container and remove it once it's done
-docker run -d -p port_num:port_num image_name  # Run a container mapping a port between host and container
+docker run -d --rm --name 
+"cont_name" 
+-p host_port:cont_port img_name # Start a container and remove it once it's done
+docker run -d 
+-p port_num:port_num image_name # Run a container mapping a port between host and container
 docker ps                       # proces state
 docker ps -a                    # process state all
 docker rm container_id          # remove a container
-docker exec -it container_id bash   # Run a command inside a running container
+docker exec -it cont_id bash    # Run a command inside a running container
 
 ## Image Management
 
 docker build -t image_name .    # Build Image from Docker file
-docker build -t image_name -f Dockerfile .    # Build Image from Dockerfile
+docker build -t image_name 
+-f Dockerfile .                 # Build Image from Dockerfile
+docker image ls                 # List images
 docker images                   # List local images
 docker rmi image_id             # Remove an image
 docker pull image_name          # Pull an image from docker hub
